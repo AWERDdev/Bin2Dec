@@ -18,10 +18,29 @@ app.use(express.urlencoded({extended:true}));
 
 //* routes
 
-app.use('/',(req,res)=>{
+app.get('/',(req,res)=>{
     res.json({message:"Hello welcome to Bin2Dic API !!👍"})
 })
 
+app.get("/convert",(req,res)=>{
+    const binaryNum = req.query.binary;
+    
+        const decimalNum = parseInt(binaryNum, 2);
+    
+    
+    if (isNaN(decimalNum)) {
+        return res.status(400).json({
+            error: "Invalid binary number",
+            status: false
+        });
+    }
+
+    return res.json({
+        binary: binaryNum,
+        decimal: decimalNum,
+        status: true
+    });
+})
 
 
 app.listen(port,()=>{
