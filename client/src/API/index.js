@@ -10,20 +10,21 @@ let Value = {}
 
 // Main CORS configuration
 app.use(cors({
-    origin: ['https://bin2dec-frontend.vercel.app', 'http://localhost:5173'],
+    origin: ['https://bin2dec-frontend.vercel.app', 'http://localhost:5173', 'https://bin2dec-backend.vercel.app'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type'],
     credentials: true,
-    maxAge: 86400 // Cache preflight requests for 24 hours
+    maxAge: 86400
 }));
 
-// Additional headers for extra compatibility
+// Update the header configuration as well
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://bin2dec-frontend.vercel.app');
+    res.header('Access-Control-Allow-Origin', '*'); // Allow all origins for testing
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
+
 //* middleware
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
