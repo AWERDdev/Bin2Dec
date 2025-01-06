@@ -1,0 +1,42 @@
+.inputs-container{
+display: flex;
+}
+.row{
+    display: grid;
+
+}
+.bin2dic-Input{
+width: 40vw;
+height: 4vh;
+border-radius:0.3rem;
+border: 1px solid lightgray;
+min-width: 300px;
+max-height: 30px;
+}
+
+
+
+.button-container{
+    position: relative;
+}
+.convert{
+    background-color: black;
+    color: white;
+    width:7vw ;
+    height: 4vh;
+    position: absolute;
+    right: 0;
+    top: 19px;
+    min-width: 70px;
+    max-height: 30px;
+}
+.convert:hover{
+    background-color: white;
+    color: black;
+    outline: 1px solid black;
+}
+.display-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}

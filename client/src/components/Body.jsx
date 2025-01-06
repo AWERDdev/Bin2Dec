@@ -42,18 +42,20 @@ const HandleFunctions = ()=>{
 
     return(
         <>
+        <div className="inputs-container">
 <div className="input-container">
     <div className="row">
     <label htmlFor="Input">
-        Enter binary number
+        convert binary to Decimal number
     </label>
     <input type="text" className="bin2dic-Input" id="Input"name="bin2dic-Input"placeholder="Enter binary number"onChange={(e)=> setinputValue(e.target.value)}/>
+   <label htmlFor="Input" className="warning-label"></label>
     </div>
 </div>
-<div className="button-container"><button className="convert"id="convert-btn"onClick={HandleFunctions}>Convert to decimal number </button></div>
-
+<div className="button-container"><button className="convert"id="convert-btn"onClick={HandleFunctions}>Convert</button></div>
+</div>
 <div className="display-container">
-    <p className="display">{DecimalNum.decimalNum}</p>
+    <p className="display">{DecimalNum.Decimal}</p>
 </div>
         </>
     )

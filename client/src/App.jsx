@@ -8,9 +8,12 @@ function App() {
       <div className="header">
         <NavBar/>
       </div>
+    
       <div className="body">
+     
         <Body/>
       </div>
+     
     </>
   )
 }

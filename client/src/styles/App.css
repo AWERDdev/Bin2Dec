@@ -7,13 +7,44 @@ button{
     appearance: none;
 
 }
+
 a{
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-decoration: none;
     color: black;
 }
+
 a:hover{
     
     text-decoration: underline;
-    color:hsl(208, 100%, 50%) ;
+    color:hsl(208, 100%, 50%);
+}
+
+a:focus{
+    text-decoration: underline;
+    color:hsl(208, 100%, 50%);
+}
+
+a:active{
+    text-decoration: underline;
+    color:hsl(208, 100%, 50%);
+}
+
+
+.body{
+    display: grid;
+    justify-content: center;
+     margin-top: 2rem;
+     gap: 3rem;
+}
+
+
+.background{
+    width: 30%;
+    height: auto;
+    position: absolute;
+    right: 0;
+}
+.warning-label{
+    color: red;
 }
