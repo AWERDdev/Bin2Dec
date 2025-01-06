@@ -7,28 +7,23 @@ const cors = require('cors');
 let Value = {}
 //* cors
 
+
+// Main CORS configuration
 app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    origin: ['https://bin2dec-frontend.vercel.app', 'http://localhost:5173'],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type'],
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
-    exposedHeaders: ['Content-Range', 'X-Content-Range']
+    maxAge: 86400 // Cache preflight requests for 24 hours
 }));
-// app.use(cors({
-//     origin: true,
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-//     credentials: true,
-//     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
-//     exposedHeaders: ['Content-Range', 'X-Content-Range']
-// }));
 
-// app.use(cors({
-//     origin: 'https://bin2dec-frontend.vercel.app',
-//     methods: ['GET', 'POST', 'OPTIONS'],
-//     credentials: true,
-//     allowedHeaders: ['Content-Type', 'Authorization']
-// }));
-
+// Additional headers for extra compatibility
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://bin2dec-frontend.vercel.app');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 //* middleware
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
