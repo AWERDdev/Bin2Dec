@@ -14,7 +14,8 @@ function Body(){
             setmessage("Please Enter a binary number")
             
         }else{
-            fetch(` http://localhost:3500/convert?value=${encodeURIComponent(inputValue)}`)
+            // fetch(` http://localhost:3500/convert?value=${encodeURIComponent(inputValue)}`)
+            fetch(`https://Bin2dic-backend.vercel.app/convert?value=${encodeURIComponent(inputValue)}`)
             .then(response => response.json())
             .then(data =>{
               console.log( `data send successfully ${data}`)
@@ -32,7 +33,7 @@ const fetchnums = async () =>{
         if(!InputHandling(inputValue)){
              // console.log("invalid input")
         }else{
-            const response = await fetch(`http://localhost:3500/sendDecimalnum`);
+            const response = await fetch(`https://Bin2dic-backend.vercel.app/sendDecimalnum`);
             const data = await response.json()
             setDecimalNum(data)
             // console.log(`data recived successfully`)
