@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3500;
 const cors = require('cors');
 
-
+let Value = {}
 //* cors
 app.use(cors({
     origin:"*",
@@ -22,25 +22,42 @@ app.get('/',(req,res)=>{
     res.json({message:"Hello welcome to Bin2Dic API !!👍"})
 })
 
-app.get("/convert",(req,res)=>{
-    const binaryNum = req.query.binary;
-    
-        const decimalNum = parseInt(binaryNum, 2);
-    
-    
-    if (isNaN(decimalNum)) {
-        return res.status(400).json({
-            error: "Invalid binary number",
-            status: false
-        });
-    }
+app.get("/convert",async(req,res)=>{
+    try{
 
-    return res.json({
-        binary: binaryNum,
-        decimal: decimalNum,
-        status: true
-    });
+        const binaryNum = await req.query.value;
+        if(!binaryNum){
+            console.log('please enter a binary number')
+    
+        } 
+        const decimalNum = await parseInt(binaryNum, 2);
+            if (isNaN(decimalNum)) {
+                return res.status(400).json({
+                    error: "Invalid binary number",
+                    status: false
+                });
+            }
+                  Value = {
+                    Decimal:decimalNum
+                  }
+                 
+        console.log(decimalNum);
+        console.log(Value)
+        console.log(binaryNum);
+      
+    }catch(error){
+    console.error(`failed to convert binary numver \n ${error}`)
+    }
+    
 })
+
+app.get("/sendDecimalnum",(req,res)=>{
+    res.json(Value)
+    console.log('data sent successfully')
+})
+
+
+
 
 
 app.listen(port,()=>{
