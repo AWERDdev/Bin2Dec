@@ -35,34 +35,38 @@ app.get('/',(req,res)=>{
     res.json({message:"Hello welcome to Bin2Dic API !!👍"})
 })
 
-app.get("/convert",async(req,res)=>{
-    try{
-
-        const binaryNum = await req.query.value;
-        if(!binaryNum){
-            console.log('please enter a binary number')
-    
-        } 
-        const decimalNum = await parseInt(binaryNum, 2);
-            if (isNaN(decimalNum)) {
-                return res.status(400).json({
-                    error: "Invalid binary number",
-                    status: false
-                });
-            }
-                  Value = {
-                    Decimal:decimalNum
-                  }
-                 
-        console.log(decimalNum);
-        console.log(Value)
-        console.log(binaryNum);
-      
-    }catch(error){
-    console.error(`failed to convert binary numver \n ${error}`)
+app.get("/convert", async (req, res) => {
+    try {
+        const binaryNum = req.query.value;
+        if (!binaryNum) {
+            return res.status(400).json({
+                error: "Please enter a binary number",
+                status: false
+            });
+        }
+        
+        const decimalNum = parseInt(binaryNum, 2);
+        if (isNaN(decimalNum)) {
+            return res.status(400).json({
+                error: "Invalid binary number",
+                status: false
+            });
+        }
+        
+        Value = { Decimal: decimalNum };
+        
+        return res.status(200).json({
+            status: true,
+            data: Value
+        });
+        
+    } catch (error) {
+        return res.status(500).json({
+            error: "Failed to convert binary number",
+            status: false
+        });
     }
-    
-})
+});
 
 app.get("/sendDecimalnum",(req,res)=>{
     res.json(Value)
