@@ -15,7 +15,7 @@ function Body(){
             
         }else{
             // fetch(` http://localhost:3500/convert?value=${encodeURIComponent(inputValue)}`)
-            fetch(`https://Bin2dic-backend.vercel.app/convert?value=${encodeURIComponent(inputValue)}`)
+            fetch(`https://Bin2dec-backend.vercel.app/convert?value=${encodeURIComponent(inputValue)}`)
             .then(response => response.json())
             .then(data =>{
               console.log( `data send successfully ${data}`)
