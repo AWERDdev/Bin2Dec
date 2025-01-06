@@ -6,6 +6,7 @@ const cors = require('cors');
 
 let Value = {}
 //* cors
+
 app.use(cors({
     origin: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
@@ -13,6 +14,14 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
     exposedHeaders: ['Content-Range', 'X-Content-Range']
 }));
+
+app.use(cors({
+    origin: 'https://bin2-dec-frontend.vercel.app',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 //* middleware
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
