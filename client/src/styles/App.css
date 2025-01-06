@@ -1,0 +1,19 @@
+button{
+    cursor: pointer;
+    background:none;
+    border: none;
+    border-radius: 0.3rem;
+    outline: none;
+    appearance: none;
+
+}
+a{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    
+    text-decoration: underline;
+    color:hsl(208, 100%, 50%) ;
+}
