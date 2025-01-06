@@ -14,20 +14,20 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
     exposedHeaders: ['Content-Range', 'X-Content-Range']
 }));
-app.use(cors({
-    origin: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
-    exposedHeaders: ['Content-Range', 'X-Content-Range']
-}));
+// app.use(cors({
+//     origin: true,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+//     credentials: true,
+//     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+//     exposedHeaders: ['Content-Range', 'X-Content-Range']
+// }));
 
-app.use(cors({
-    origin: 'https://bin2dec-frontend.vercel.app',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// app.use(cors({
+//     origin: 'https://bin2dec-frontend.vercel.app',
+//     methods: ['GET', 'POST', 'OPTIONS'],
+//     credentials: true,
+//     allowedHeaders: ['Content-Type', 'Authorization']
+// }));
 
 //* middleware
 app.use(express.json())
