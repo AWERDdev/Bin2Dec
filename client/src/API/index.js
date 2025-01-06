@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 app.use(cors({
-    origin: 'https://bin2-dec-frontend.vercel.app',
+    origin: 'https://bin2dec-frontend.vercel.app',
     methods: ['GET', 'POST', 'OPTIONS'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
