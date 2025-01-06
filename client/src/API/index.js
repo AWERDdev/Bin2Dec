@@ -7,11 +7,12 @@ const cors = require('cors');
 let Value = {}
 //* cors
 app.use(cors({
-    origin:"*",
-    methods: ['GET', 'POST', 'OPTIONS'],
+    origin: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
-}))
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+    exposedHeaders: ['Content-Range', 'X-Content-Range']
+}));
 //* middleware
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
