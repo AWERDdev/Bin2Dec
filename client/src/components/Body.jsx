@@ -33,7 +33,7 @@ const fetchnums = async () =>{
         if(!InputHandling(inputValue)){
              // console.log("invalid input")
         }else{
-            const response = await fetch(`https://Bin2dic-backend.vercel.app/sendDecimalnum`);
+            const response = await fetch(`https://Bin2dec-backend.vercel.app/sendDecimalnum`);
             const data = await response.json()
             setDecimalNum(data)
             // console.log(`data recived successfully`)
