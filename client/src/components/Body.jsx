@@ -18,13 +18,9 @@ function Body(){
 
             const response = await fetch(`https://Bin2dec-backend.vercel.app/convert?value=${encodeURIComponent(inputValue)}`);
             const data = await response.json();
-            
-            if (data.status) {
-                setDecimalNum(data.data);
-                setmessage("");
-            } else {
-                setmessage(data.error || "Conversion failed");
-            }
+            setDecimalNum(data.Decimal);
+            setmessage("");
+            console.log(data.Decimal)
         } catch (error) {
             console.error(`Failed to convert: ${error}`);
             setmessage("Error converting number");
@@ -32,6 +28,7 @@ function Body(){
             setisLoading(false);
         }
     }     
+
 
 
     return(
@@ -53,7 +50,7 @@ function Body(){
     {isLoading ? (
         <span>Converting binary number...</span>
     ) : (
-        <span>{DecimalNum?.Decimal ? DecimalNum.Decimal : 'Enter a binary number'}</span>
+        <span>{DecimalNum || 'Enter a binary number'}</span>
     )}
 </div>
 

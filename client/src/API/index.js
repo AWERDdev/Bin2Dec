@@ -52,14 +52,11 @@ app.get("/convert", async (req, res) => {
                 status: false
             });
         }
-        let Value = {}
+        let Value = {};
         Value = { Decimal: decimalNum };
-        res.json(Value)
-        return res.status(200).json({
-            status: true,
-            data: Value
-        });
-        
+       
+       console.log(Value)
+       return res.status(200).json(Value)
     } catch (error) {
         return res.status(500).json({
             error: "Failed to convert binary number",
@@ -67,12 +64,6 @@ app.get("/convert", async (req, res) => {
         });
     }
 });
-
-app.get("/sendDecimalnum",(req,res)=>{
-
-    console.log('data sent successfully')
-})
-
 
 
 
