@@ -1,5 +1,12 @@
 # Bin2Dec
  This will be an app to converte binary nums to Decimal nums
+
+## important
+please download the modules by running
+```
+npm i
+```
+
 ## To run the app
 
 Type in the termanil 

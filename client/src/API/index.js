@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3500;
 const cors = require('cors');
 
-let Value = {}
+
 //* cors
 
 
@@ -52,9 +52,9 @@ app.get("/convert", async (req, res) => {
                 status: false
             });
         }
-        
+        let Value = {}
         Value = { Decimal: decimalNum };
-        
+        res.json(Value)
         return res.status(200).json({
             status: true,
             data: Value
@@ -69,7 +69,7 @@ app.get("/convert", async (req, res) => {
 });
 
 app.get("/sendDecimalnum",(req,res)=>{
-    res.json(Value)
+
     console.log('data sent successfully')
 })
 

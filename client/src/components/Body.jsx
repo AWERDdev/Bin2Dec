@@ -2,54 +2,36 @@ import "../styles/body.css"
 import { useState } from "react";
 import InputHandling from "../tools/InputHandling";
 function Body(){
-
+    const [isLoading,setisLoading] = useState(false);
     const [inputValue,setinputValue] = useState("")
-    const[DecimalNum,setDecimalNum] = useState({})
+    const[DecimalNum,setDecimalNum] = useState("")
     const [message,setmessage] = useState("")
 
-
-    const sendNum = ()=>{
-        if(!InputHandling(inputValue)){
-            // console.log("invalid input")
-            setmessage("Please Enter a binary number")
-            
-        }else{
-            // fetch(` http://localhost:3500/convert?value=${encodeURIComponent(inputValue)}`)
-            fetch(`https://Bin2dec-backend.vercel.app/convert?value=${encodeURIComponent(inputValue)}`)
-            .then(response => response.json())
-            .then(data =>{
-              console.log( `data send successfully ${data}`)
-            })
-            .catch(error=>{
-              console.error(`failed to send data \n ${error}`)
-            })
-            
-        }
-}
-        
-
-const fetchnums = async () =>{
-    try{
-        if(!InputHandling(inputValue)){
-             // console.log("invalid input")
-        }else{
-            const response = await fetch(`https://Bin2dec-backend.vercel.app/sendDecimalnum`);
-            const data = await response.json()
-            setDecimalNum(data)
-            // console.log(`data recived successfully`)
+    const handleConversion = async () => {
+        setisLoading(true);
+        try {
+            if (!InputHandling(inputValue)) {
+                setmessage("Please Enter a binary number");
+                setDecimalNum("")
+                return;
             }
-        }
-        catch(error){
-            console.error(`failed to send data \n${error}`)
-        }
-    }
-    
-const HandleFunctions = ()=>{
 
-    sendNum(); 
-    fetchnums();
- 
-}
+            const response = await fetch(`https://Bin2dec-backend.vercel.app/convert?value=${encodeURIComponent(inputValue)}`);
+            const data = await response.json();
+            
+            if (data.status) {
+                setDecimalNum(data.data);
+                setmessage("");
+            } else {
+                setmessage(data.error || "Conversion failed");
+            }
+        } catch (error) {
+            console.error(`Failed to convert: ${error}`);
+            setmessage("Error converting number");
+        } finally {
+            setisLoading(false);
+        }
+    }     
 
 
     return(
@@ -64,11 +46,20 @@ const HandleFunctions = ()=>{
    <label htmlFor="Input" className="warning-label">{message}</label>
     </div>
 </div>
-<div className="button-container"><button className="convert"id="convert-btn"onClick={HandleFunctions}>Convert</button></div>
+<div className="button-container"><button className="convert"id="convert-btn"onClick={handleConversion}>Convert</button></div>
 </div>
 <div className="display-container">
-    <p className="display">{DecimalNum.Decimal}</p>
+<div className="display">
+    {isLoading ? (
+        <span>Converting binary number...</span>
+    ) : (
+        <span>{DecimalNum?.Decimal ? DecimalNum.Decimal : 'Enter a binary number'}</span>
+    )}
 </div>
+
+</div>
+
+
         </>
     )
 }
