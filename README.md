@@ -57,7 +57,7 @@ npm start
 
 5. For development mode:
 ```bash
-npm run devstart
+npm run Devstart
 ```
 
 6. Open your browser and navigate to `http://localhost:3000` (or the port specified in the application)
